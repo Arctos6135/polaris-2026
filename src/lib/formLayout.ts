@@ -9,68 +9,30 @@ export const ScoutingForm: Form = {
             inputs: [
                 {
                     type: "input",
-                    label: "Score L1",
-                    tooltip: "Did they score in L1 (trough) during the autonomous period",
+                    label: "Score Hub",
+                    tooltip: "Did this team score in the hub in auto?",
                     component: {
                         type: "Checkbox",
-                        id: "auto score L1"
+                        id: "auto score hub"
                     }
                 },
                 {
                     type: "input",
-                    label: "Score L2",
-                    tooltip: "Did they score on L2 during auto",
-                    component: {
-                        type: "Checkbox",
-                        id: "auto score L2"
-                    } 
-                },
-                {
-                    type: "input",
-                    label: "Score L3",
-                    tooltip: "Did they score on L3 during auto",
-                    component: {
-                        type: "Checkbox",
-                        id: "auto score L3"
-                    } 
-                },
-                {
-                    type: "input",
-                    label: "Score L4",
-                    tooltip: "Did they score on L4 during auto",
-                    component: {
-                        type: "Checkbox",
-                        id: "auto score L4"
-                    } 
-                },
-                {
-                    type: "input",
-                    label: "Score Processor",
-                    tooltip: "Did they score algae in the processor during auto",
-                    component: {
-                        type: "Checkbox",
-                        id: "auto processor"
-                    } 
-                },
-                {
-                    type: "input",
-                    label: "Score Net",
-                    tooltip: "Did the robot score algae in the net during auto",
-                    component: {
-                        type: "Checkbox",
-                        id: "auto net"
-                    }
-                    
-                },
-                {
-                    type: "input",
-                    label: "Leave",
-                    tooltip: "Did the robot move off the starting line during auto",
+                    label: "Leave Alliance Zone",
+                    tooltip: "Did this team leave their alliance zone (aka enter the neutral zone)?",
                     component: {
                         type: "Checkbox",
                         id: "auto leave"
                     }
-                    
+                },
+                {
+                    type: "input",
+                    label: "Auto Climb",
+                    tooltip: "Did this team climb in auto?",
+                    component: {
+                        type: "Checkbox",
+                        id: "auto climb"
+                    }
                 }
             ]
         },
@@ -81,135 +43,118 @@ export const ScoutingForm: Form = {
             inputs: [
                 {
                     type: "input",
-                    label: "Score L1",
-                    tooltip: "Did they score in L1 (trough) during the teleoperated period",
+                    label: "Score Hub",
+                    tooltip: "Did this team score in the hub in Teleop?",
                     component: {
                         type: "Checkbox",
-                        id: "score L1"
+                        id: "score hub"
                     }
-                },
-                {
-                    type: "input",
-                    label: "Score L2",
-                    tooltip: "Did they score on L2 during teleop",
-                    component: {
-                        type: "Checkbox",
-                        id: "score L2"
-                    } 
-                },
-                {
-                    type: "input",
-                    label: "Score L3",
-                    tooltip: "Did they score on L3 during teleop",
-                    component: {
-                        type: "Checkbox",
-                        id: "score L3"
-                    } 
-                },
-                {
-                    type: "input",
-                    label: "Score L4",
-                    tooltip: "Did they score on L4 during teleop",
-                    component: {
-                        type: "Checkbox",
-                        id: "score L4"
-                    } 
-                },
-                {
-                    type: "input",
-                    label: "Score Processor",
-                    tooltip: "Did they score algae in the processor during teleop",
-                    component: {
-                        type: "Checkbox",
-                        id: "processor"
-                    } 
-                },
-                {
-                    type: "input",
-                    label: "Score Net",
-                    tooltip: "Did the robot score algae in the net during teleop",
-                    component: {
-                        type: "Checkbox",
-                        id: "net"
-                    }
-                    
                 },
                 {
                     type: "input",
                     label: "Defense",
-                    tooltip: "Did the robot play defense? if so how and against which team(s)",
+                    tooltip: "Did this team play defense at all in the game? Colliding with opponents once does not count as defense, but is this robot actively preventing robot(s) from getting somewhere?",
                     component: {
-                        type: "Textbox",
-                        id: "defense",
+                        type: "Checkbox",
+                        id: "defense"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Got Defended",
+                    tooltip: "Did this team get defended, or in other words, was this team trying to get somewhere but was actively being targeted by robot(s)?",
+                    component: {
+                        type: "Checkbox",
+                        id: "got defended"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Trench",
+                    tooltip: "Did this team go under the trench at all during the match? If so, was it hard for them to go under the trench, or did they do it almost effortlessly?",
+                    component: {
+                        type: "Dropdown",
+                        id: "trench",
+                        options: ["Did Not Attempt", "Struggled With", "Attempted Successfully"],
+                        validator: (choice: string) => undefined
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Bump",
+                    tooltip: "Did this team go over the bump at all during the match? If so, was it hard for them to go over the bump, or did they do it almost effortlessly?",
+                    component: {
+                        type: "Dropdown",
+                        id: "bump",
+                        options: ["Did Not Attempt", "Struggled With", "Attempted Successfully"],
+                        validator: (choice: string) => undefined
                     }
                 },
                 {
                     type: "input",
                     label: "Driving",
-                    tooltip: "How was the driving? (did they get in the way, jerky movement)",
+                    tooltip: "How good was their driving? Did they get in the way of their alliance partners? Was their driving smooth or jerky?",
                     component: {
                         type: "Textbox",
-                        id: "driving",                        
+                        id: "driving"
                     }
                 },
                 {
                     type: "input",
-                    label: "Quality of Intaking",
-                    tooltip: "How fast/efficient was their intake?",
+                    label: "Intaking",
+                    tooltip: "How good was their intaking? Was it efficient and/or effective?",
                     component: {
                         type: "Textbox",
-                        id: "intake",
+                        id: "intaking"
                     }
                 },
                 {
                     type: "input",
                     label: "Scoring Precision",
-                    tooltip: "How precise was their scoring? Did they miss a lot, drop pieces, struggle with certain levels?",
+                    tooltip: "How accurate was their scoring? Did they miss a lot, drop pieces, struggle to score from certain areas?",
                     component: {
                         type: "Textbox",
-                        id: "precision",
+                        id: "precision"
                     }
                 },
                 {
                     type: "input",
                     label: "Issues",
-                    tooltip: "Did they encounter any problems? (game piece got stuck, stopped moving, something fell off etc.)",
+                    tooltip: "Did they encounter any problems? Did fuel get stuck, did they stop moving, did something fall off, etc.?",
                     component: {
                         type: "Textbox",
-                        id: "issues",
+                        id: "issues"
                     }
-                },
+                }
             ]
         },
         {
             type: "section",
             id: "endgame",
             header: "Endgame",
-            inputs:
-            [
+            inputs: [
                 {
                     type: "input",
                     label: "Endgame",
-                    tooltip: "What did they do in the last 30 seconds of the match",
+                    tooltip: "What is their endgame state?",
                     component: {
                         type: "Dropdown",
                         id: "endgame",
-                        options: ["Deep Climb", "Shallow Climb", "Park", "None"],
+                        options: ["None", "L1", "L2", "L3"],
                         validator: (choice: string) => undefined
                     }
-                },
+                }
             ]
         },
         {
             type: "section",
             id: "other",
             header: "Other",
-            inputs:
-            [
+            inputs: [
                 {
                     type: "input",
                     label: "Other Comments",
-                    tooltip: "Any information that doesn't go in one of the above sections",
+                    tooltip: "What other things did you notice about the team? Are there any glaring concerns, like reliability issues?",
                     component: {
                         type: "Textbox",
                         id: "comments"
@@ -217,91 +162,106 @@ export const ScoutingForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Fouls",
-                    tooltip: "Try to track how many fouls the team gets and for what",
+                    label: "Penalties",
+                    tooltip: "What kind of penalties did this team commit during the match?",
                     component: {
                         type: "Textbox",
-                        id: "fouls"
+                        id: "penalties"
                     }
-                },
+                }
             ]
         }
-
     ]
 }
 
-// Add ground/station intake
 export const PitScoutingForm: Form = {
     sections: [
         {
             type: "section",
-            id: "scoring",
-            header: "Scoring",
+            id: "capabilities",
+            header: "Capabilities",
             inputs: [
                 {
                     type: "input",
-                    label: "Can score L1? (trough)",
+                    label: "Robot Preferred Fuel Capacity",
+                    tooltip: "What is the fuel capacity that this team wants to use optimally?",
+                    component: {
+                        type: "Textbox",
+                        id: "preferred fuel capacity"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Actual Fuel Capacity",
+                    tooltip: "What is the absolute maximum fuel capacity the robot can hold realistically?",
+                    component: {
+                        type: "Textbox",
+                        id: "fuel capacity"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Score Hub",
+                    tooltip: "Can this team score in the hub?",
+                    component: {
+                        type: "Checkbox",
+                        id: "score hub"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Trench",
+                    tooltip: "Can this team go under the trench?",
+                    component: {
+                        type: "Checkbox",
+                        id: "trench"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Bump",
+                    tooltip: "Is this team willing to go over the bump, or do they prefer not to?",
                     component: {
                         type: "Dropdown",
-                        id: "l1 scoring",
-                        options: ["Yes", "Maybe", "No"],
-                        manual: false,
+                        id: "bump",
+                        options: ["Go Over the Bump", "Prefer Not To"],
                         validator: (choice: string) => undefined
                     }
                 },
                 {
                     type: "input",
-                    label: "Can score L2?",
+                    label: "L1 Climb (AUTO)",
+                    tooltip: "Can this team climb in auto?",
                     component: {
-                        type: "Dropdown",
-                        id: "l2 scoring",
-                        options: ["Yes", "Maybe", "No"],
-                        manual: false,
-                        validator: (choice: string) => undefined
+                        type: "Checkbox",
+                        id: "auto l1 climb"
                     }
                 },
                 {
                     type: "input",
-                    label: "Can score L3?",
+                    label: "L1 Climb (ENDGAME)",
+                    tooltip: "Can this team climb L1 in endgame?",
                     component: {
-                        type: "Dropdown",
-                        id: "l3 scoring",
-                        options: ["Yes", "Maybe", "No"],
-                        manual: false,
-                        validator: (choice: string) => undefined
+                        type: "Checkbox",
+                        id: "l1 climb"
                     }
                 },
                 {
                     type: "input",
-                    label: "Can score L4?",
+                    label: "L2 Climb (ENDGAME)",
+                    tooltip: "Can this team climb L2 in endgame?",
                     component: {
-                        type: "Dropdown",
-                        id: "l4 scoring",
-                        options: ["Yes", "Maybe", "No"],
-                        manual: false,
-                        validator: (choice: string) => undefined
+                        type: "Checkbox",
+                        id: "l2 climb"
                     }
                 },
                 {
                     type: "input",
-                    label: "Can score net?",
+                    label: "L3 Climb (ENDGAME)",
+                    tooltip: "Can this team climb L3 in endgame?",
                     component: {
-                        type: "Dropdown",
-                        id: "net scoring",
-                        options: ["Yes", "Maybe", "No"],
-                        manual: false,
-                        validator: (choice: string) => undefined
-                    }
-                },
-                {
-                    type: "input",
-                    label: "Can score processor?",
-                    component: {
-                        type: "Dropdown",
-                        id: "processor scoring",
-                        options: ["Yes", "Maybe", "No"],
-                        manual: false,
-                        validator: (choice: string) => undefined
+                        type: "Checkbox",
+                        id: "l3 climb"
                     }
                 }
             ]
@@ -313,30 +273,23 @@ export const PitScoutingForm: Form = {
             inputs: [
                 {
                     type: "input",
-                    label: "Deep climb?",
-                    component: {
-                        type: "Checkbox",
-                        id: "deep climb",
-                        initialValue: 0
-                    }
-                },
-                {
-                    type: "input",
-                    label: "Shallow climb?",
-                    component: {
-                        type: "Checkbox",
-                        id: "shallow climb",
-                        initialValue: 0
-                    }
-                },
-                {
-                    type: "input",
                     label: "Drivetrain",
+                    tooltip: "What type of drivetrain does this team have?",
                     component: {
                         type: "Dropdown",
                         id: "drivetrain",
-                        options: ["Tank", "Swerve", "Other"],
-                        manual: false,
+                        options: ["[select something]", "Swerve", "Tank", "Other"],
+                        validator: (choice: string) => undefined
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Intake",
+                    tooltip: "What type of intake does this team have?",
+                    component: {
+                        type: "Dropdown",
+                        id: "intake",
+                        options: ["[select something]", "Outpost", "Ground", "Both Outpost and Ground", "Other"],
                         validator: (choice: string) => undefined
                     }
                 },
@@ -352,17 +305,8 @@ export const PitScoutingForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Length (front to back, inches)",
-                    component: {
-                        type: "Counter",
-                        id: "length",
-                        initialValue: 0,
-                        hasButtons: false
-                    }
-                },
-                {
-                    type: "input",
-                    label: "Width (side to side, inches)",
+                    label: "Width (inches)",
+                    tooltip: "How wide is the robot, in inches? The response to this can be empty.",
                     component: {
                         type: "Counter",
                         id: "width",
@@ -372,18 +316,39 @@ export const PitScoutingForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Intake",
+                    label: "Length (inches)",
+                    tooltip: "How long is the robot, in inches? The response to this can be empty.",
                     component: {
-                        type: "Dropdown",
-                        id: "intake",
-                        options: ["Ground", "Station", "Both"],
-                        validator: (choice: String) => undefined
+                        type: "Counter",
+                        id: "length",
+                        initialValue: 0,
+                        hasButtons: false
                     }
-
                 },
                 {
                     type: "input",
-                    label: "Starting Height (inches)",
+                    label: "Width WITH BUMPERS (inches)",
+                    component: {
+                        type: "Counter",
+                        id: "width with bumpers",
+                        initialValue: 0,
+                        hasButtons: false
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Length WITH BUMPERS (inches)",
+                    component: {
+                        type: "Counter",
+                        id: "length with bumpers",
+                        initialValue: 0,
+                        hasButtons: false
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Retracted Height (inches)",
+                    tooltip: "How tall is their robot when no mechanisms are extended?",
                     component: {
                         type: "Counter",
                         id: "retracted height",
@@ -393,7 +358,8 @@ export const PitScoutingForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Maximum Height (inches)",
+                    label: "Extended Height (inches)",
+                    tooltip: "How tall is their robot when all vertical extensions are enabled?",
                     component: {
                         type: "Counter",
                         id: "extended height",
@@ -405,36 +371,86 @@ export const PitScoutingForm: Form = {
         },
         {
             type: "section",
-            id: "other",
-            header: "Other",
+            id: "comments",
+            header: "Comments",
             inputs: [
                 {
                     type: "input",
-                    label: "Autos comments",
-                    tooltip: "What autos do they have, how consistently they work, other info",
+                    label: "Autos",
+                    tooltip: "What type of autos does this team have? Be specific: tell me how many game pieces, where they start, how long it takes, how effective/efficient it is, and overall what they do during that autonomous.",
                     component: {
                         type: "Textbox",
-                        id: "auto comments",
-                        maxLength: 200
+                        id: "autos"
                     }
                 },
                 {
                     type: "input",
-                    label: "General Comments",
+                    label: "How Do They Climb",
+                    tooltip: "How do they climb on the tower? Tell me how long it takes them to line up + climb.",
                     component: {
                         type: "Textbox",
-                        id: "general comments",
-                        maxLength: 200
+                        id: "how climb"
                     }
                 },
                 {
                     type: "input",
-                    label: "Robot's favourite colour",
-                    tooltip: "Most important question",
+                    label: "Driver Experience",
+                    tooltip: "How experienced are the drivers?",
                     component: {
                         type: "Textbox",
-                        id: "fave colour",
-                        maxLength: 42
+                        id: "driver experience"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Preferences",
+                    tooltip: "What preferences do they have? Starting position, roles during alliance/off-shifts, position in the tower, trench vs. bump, etc.",
+                    component: {
+                        type: "Textbox",
+                        id: "preferences"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Comments",
+                    tooltip: "Any other comments?",
+                    component: {
+                        type: "Textbox",
+                        id: "general comments"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Reliability Issues",
+                    tooltip: "Are there some things they are not comfortable with (such as the climb not being very reliable or the auto not working too well)?",
+                    component: {
+                        type: "Textbox",
+                        id: "reliability issues"
+                    }
+                }
+            ]
+        },
+        {
+            type: "section",
+            id: "miscellaneous",
+            header: "Miscellaneous",
+            inputs: [
+                {
+                    type: "input",
+                    label: "Miscellaneous",
+                    tooltip: "Anything else that does not fit in any other question.",
+                    component: {
+                        type: "Textbox",
+                        id: "miscellaneous"
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Favourite Colour",
+                    tooltip: "The team's favourite colour!",
+                    component: {
+                        type: "Textbox",
+                        id: "fave colour"
                     }
                 }
             ]
