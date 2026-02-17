@@ -76,27 +76,27 @@
 </script>
 
 <div class="my-2 flex flex-col gap-1.5">
+    {#if selected.has(PLACEHOLDER)}
+        <span class="text-sm text-gray-400 italic">{PLACEHOLDER}</span>
+    {/if}
+
     <!-- Option toggle buttons, one per real option -->
-    <div class="flex flex-wrap gap-2">
+    <div class="flex flex-col gap-2">
         {#each realOptions as option}
             {@const isSelected = selected.has(option)}
             <button
                 type="button"
                 on:click={() => toggleOption(option)}
-                class="button clickable transition-all !px-3 !py-1 !font-normal border-2"
+                class="button clickable transition-all !text-left !px-3 !py-1 !font-normal border-2"
                 class:!bg-enabled={isSelected}
                 class:border-enabled={isSelected}
                 class:border-primary={!isSelected}
             >
+                {isSelected ? "✅" : "⏹️"}
                 {option}
             </button>
         {/each}
     </div>
-
-    <!-- Placeholder badge — visible only when nothing real is selected -->
-    {#if selected.has(PLACEHOLDER)}
-        <span class="text-sm text-gray-400 italic">{PLACEHOLDER}</span>
-    {/if}
 
     <!-- "Other" text box — only shown when Other is selected -->
     {#if showOtherBox}
