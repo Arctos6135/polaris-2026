@@ -75,7 +75,7 @@
     $: showOtherBox = selected.has(OTHER);
 </script>
 
-<div class="my-2 flex flex-col gap-1.5">
+<div class="my-2 mb-3 flex flex-col gap-1.5">
     {#if selected.has(PLACEHOLDER)}
         <span class="text-sm text-gray-400 italic">{PLACEHOLDER}</span>
     {/if}
