@@ -26,7 +26,7 @@ export type Input = {
     component: Component;
 };
 
-export type Component = Counter | Checkbox | Dropdown | Textbox;
+export type Component = Counter | Checkbox | Dropdown | Textbox | MultiSelect;
 
 export type Team = {
     number: number;
@@ -81,6 +81,35 @@ export type Textbox = {
     type: "Textbox",
     id: string,
     maxLength?: number,
+}
+
+/**
+ * A multi-select component that allows scouts to pick one or more options.
+ *
+ * The first entry in `options` MUST be "[select something]" — it acts as a
+ * required-placeholder: the form cannot be submitted while it is the active
+ * state.  Selecting any real option automatically clears the placeholder.
+ * Deselecting all real options restores the placeholder.
+ *
+ * If "Other" is present in `options`, a free-text box is revealed when the
+ * scout selects it.  The typed text replaces the bare word "Other" in the
+ * semicolon-separated output that is written to the database.
+ *
+ * Output format (stored in response.data[id]):
+ *   Single selection  → "Score"
+ *   Multiple          → "Score; Defend; Collect Fuel"
+ *   Other selected    → "Score; whatever the scout typed"
+ *   Nothing chosen    → "[select something]"  (triggers an error)
+ */
+export type MultiSelect = {
+    type: "MultiSelect",
+    id: string,
+    /**
+     * Full list of options shown to the scout.
+     * Element 0 must be "[select something]".
+     * May include "Other" to reveal a free-text box.
+     */
+    options: string[],
 }
 
 export type FormType = {

@@ -92,6 +92,42 @@ export const ScoutingForm: Form = {
                 },
                 {
                     type: "input",
+                    label: "Alliance Shifts",
+                    tooltip: "What did this team do during their alliance shifts (there are two 25-second alliance shifts per match)?",
+                    component: {
+                        type: "MultiSelect",
+                        id: "alliance shifts",
+                        options: [
+                            "[select something]",
+                            "Score",
+                            "Ferry/Pass to Alliance Partners",
+                            "Defend",
+                            "Did Nothing/Was Immobile",
+                            "Collect Fuel",
+                            "Other"
+                        ]
+                    }
+                },
+                {
+                    type: "input",
+                    label: "Off Shifts",
+                    tooltip: "What did this team do during their off-shifts (there are two 25-second off-shifts per match)?",
+                    component: {
+                        type: "MultiSelect",
+                        id: "off shifts",
+                        options: [
+                            "[select something]",
+                            "Score",
+                            "Ferry/Pass to Alliance Partners",
+                            "Defend",
+                            "Did Nothing/Was Immobile",
+                            "Collect Fuel",
+                            "Other"
+                        ]
+                    }
+                },
+                {
+                    type: "input",
                     label: "Driving",
                     tooltip: "How good was their driving? Did they get in the way of their alliance partners? Was their driving smooth or jerky?",
                     component: {
