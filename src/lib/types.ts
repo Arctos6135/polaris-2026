@@ -58,6 +58,12 @@ export type Checkbox = {
     initialValue?: number,
 }
 
+
+/**
+ * If "Other" is present in `options`, a free-text box is revealed when the
+ * scout selects it.  The typed text replaces the bare word "Other" in the
+ * output.
+ */
 export type Dropdown = {
     type: "Dropdown",
     id: string,
